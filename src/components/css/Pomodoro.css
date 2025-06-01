@@ -1,0 +1,213 @@
+.pomodoro input[type="number"] {
+  width: 110px;
+  padding: 0.7em 1em;
+  margin: 0.5em 0.7em 1.2em 0.7em;
+  border: 2px solid #c7dbfc;
+  border-radius: 10px;
+  background: #eaf2fb;
+  color: #222e3a;
+  font-size: 1.1rem;
+  font-weight: 500;
+  outline: none;
+  box-shadow: 0 1px 6px 0 rgba(80,120,255,0.07);
+  transition: border 0.2s, box-shadow 0.2s;
+  text-align: center;
+}
+
+
+.pomodoro input[type="number"]:focus {
+  border: 2px solid #2563eb;
+  box-shadow: 0 2px 12px 0 rgba(37,99,235,0.13);
+  background: #f4f8ff;
+}
+
+/* Botón Establecer Temporizador. DE MOMENTO SE HA ELIMINADO */
+#setButton {
+  display: inline-block;
+  margin: 0.5em 0 1.2em 1em;
+  background: linear-gradient(90deg, #2563eb 0%, #60a5fa 100%);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 0.8em 1.5em;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 12px rgba(80,120,255,0.10);
+  cursor: pointer;
+  transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+  vertical-align: middle;
+  margin-left: auto; /* Empujar el botón hacia la derecha */
+}
+/* Contenedor para inputs y botón */
+.pomodoro .input-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between; /* Asegurar que los inputs y el botón se distribuyan */
+  margin-bottom: 1.2em;
+  gap: 0.5em;
+}
+
+#setButton:hover {
+  background: linear-gradient(90deg, #60a5fa 0%, #2563eb 100%);
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 4px 16px rgba(80,120,255,0.13);
+}
+.pomodoro {
+  background: linear-gradient(120deg, #fff6e6 0%, #ffe0ec 100%);
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(255,60,111,0.10), 0 1.5px 8px rgba(255,140,66,0.08);
+  padding: 2.5rem 4.5rem 3.5rem 4.5rem;
+  margin: 2.5rem auto;
+  max-width: 800px;
+  border: 2.5px solid #ff8c42;
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.2s, transform 0.2s;
+  width: 80%; /* Usar porcentaje para el ancho */
+}
+
+.pomodoro h2 {
+  text-align: center;
+}
+
+
+.pomodoro button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.pomodoro:hover {
+  box-shadow: 0 12px 48px rgba(255,60,111,0.15), 0 2px 12px rgba(255,140,66,0.10);
+  transform: translateY(-4px) scale(1.02);
+}
+
+.pomodoro::before {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #ff8c42 0%, transparent 70%);
+  opacity: 0.15;
+  z-index: 0;
+}
+.pomodoro::after {
+  content: '';
+  position: absolute;
+  bottom: -40px;
+  right: -40px;
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #ff3c6f 0%, transparent 70%);
+  opacity: 0.13;
+  z-index: 0;
+}
+.pomodoro > * {
+  position: relative;
+  z-index: 1;
+}
+
+
+
+#timerDisplay {
+  font-size: 3.5rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+  color: #222e3a;
+  letter-spacing: 1.5px;
+  text-align: center;
+  background: none;
+  border-radius: 50%;
+  width: 320px;
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid #c7dbfc;
+  box-shadow: 0 2px 16px 0 rgba(80,120,255,0.07);
+  position: relative;
+  transition: box-shadow 0.2s, border 0.2s;
+  margin-left: auto;
+  margin-right: auto;
+  background: #eaf2fb;
+  width: 50%; /* Escalar proporcionalmente */
+  max-width: 300px;
+  height: auto;
+  aspect-ratio: 1 / 1; /* Mantener proporción */
+  margin: 1rem auto;
+}
+
+#timerDisplay::after {
+  content: '';
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: #2563eb;
+  border-radius: 50%;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
+  box-shadow: 0 2px 8px 0 rgba(37,99,235,0.15);
+}
+
+@keyframes timerPulse {
+  0% {
+    box-shadow: 0 4px 24px rgba(67,233,123,0.10), 0 2px 12px rgba(255,60,111,0.10);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 0 8px 32px rgba(67,233,123,0.18), 0 4px 24px rgba(255,60,111,0.18);
+    transform: scale(1.03);
+  }
+}
+
+/* Ajustes responsivos para el temporizador */
+@media (max-width: 768px) {
+  .pomodoro {
+    width: 90%;
+    padding: 1.5rem;
+  }
+
+  #timerDisplay {
+    width: 60%;
+  }
+
+  .pomodoro input[type="number"],
+  .pomodoro button {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pomodoro .input-row {
+    flex-direction: column; /* Apilar inputs y botón verticalmente */
+    align-items: stretch; /* Estirar elementos para ocupar el ancho */
+  }
+
+  .pomodoro input[type="number"],
+  #setButton {
+    width: 100%; /* Ocupar todo el ancho disponible */
+    margin: 0.5em 0; /* Ajustar márgenes */
+  }
+}
+
+@media (max-width: 480px) {
+  .pomodoro {
+    width: 95%;
+    padding: 1rem;
+  }
+
+  #timerDisplay {
+    width: 70%;
+  }
+
+  .pomodoro input[type="number"],
+  .pomodoro button {
+    max-width: 120px;
+  }
+}
