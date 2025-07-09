@@ -12,6 +12,8 @@
   box-shadow: 0 1px 6px 0 rgba(80,120,255,0.07);
   transition: border 0.2s, box-shadow 0.2s;
   text-align: center;
+  min-width: 80px;
+  max-width: 150px;
 }
 
 
@@ -47,6 +49,23 @@
   justify-content: space-between; /* Asegurar que los inputs y el botón se distribuyan */
   margin-bottom: 1.2em;
   gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.pomodoro .input-row label {
+  color: #1a202c;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  display: block;
+  text-align: center;
+}
+
+.pomodoro .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
 }
 
 #setButton:hover {
@@ -66,10 +85,15 @@
   overflow: hidden;
   transition: box-shadow 0.2s, transform 0.2s;
   width: 80%; /* Usar porcentaje para el ancho */
+  min-width: 300px;
 }
 
 .pomodoro h2 {
   text-align: center;
+  color: #1a202c;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 
@@ -135,11 +159,12 @@
   margin-left: auto;
   margin-right: auto;
   background: #eaf2fb;
-  width: 50%; /* Escalar proporcionalmente */
-  max-width: 300px;
-  height: auto;
+  width: 280px;
+  height: 280px;
   aspect-ratio: 1 / 1; /* Mantener proporción */
   margin: 1rem auto;
+  min-width: 200px;
+  min-height: 200px;
 }
 
 #timerDisplay::after {
@@ -169,45 +194,164 @@
 /* Ajustes responsivos para el temporizador */
 @media (max-width: 768px) {
   .pomodoro {
-    width: 90%;
-    padding: 1.5rem;
+    width: 95%;
+    padding: 2rem 1.5rem;
+    margin: 1.5rem auto;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.8rem;
   }
 
   #timerDisplay {
-    width: 60%;
+    width: 240px;
+    height: 240px;
+    font-size: 2.8rem;
   }
 
   .pomodoro input[type="number"],
   .pomodoro button {
-    max-width: 150px;
+    font-size: 1rem;
+  }
+
+  .pomodoro .input-row {
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .pomodoro .input-group {
+    min-width: 100px;
   }
 }
 
 @media (max-width: 576px) {
-  .pomodoro .input-row {
-    flex-direction: column; /* Apilar inputs y botón verticalmente */
-    align-items: stretch; /* Estirar elementos para ocupar el ancho */
+  .pomodoro {
+    width: 95%;
+    padding: 1.5rem 1rem;
+    min-width: 280px;
   }
 
-  .pomodoro input[type="number"],
-  #setButton {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    margin: 0.5em 0; /* Ajustar márgenes */
+  .pomodoro h2 {
+    font-size: 1.6rem;
+  }
+
+  .pomodoro .input-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .pomodoro .input-group {
+    width: 100%;
+    max-width: 200px;
+  }
+
+  .pomodoro input[type="number"] {
+    width: 100%;
+    margin: 0.3em 0;
+  }
+
+  #timerDisplay {
+    width: 200px;
+    height: 200px;
+    font-size: 2.2rem;
+  }
+
+  .pomodoro button {
+    width: 100%;
+    max-width: 250px;
+    margin: 0.5rem 0;
+    padding: 0.8rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .pomodoro {
-    width: 95%;
+    width: 98%;
     padding: 1rem;
+    margin: 1rem auto;
+    min-width: 260px;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
   }
 
   #timerDisplay {
-    width: 70%;
+    width: 180px;
+    height: 180px;
+    font-size: 2rem;
   }
 
   .pomodoro input[type="number"],
   .pomodoro button {
-    max-width: 120px;
+    font-size: 0.9rem;
+  }
+
+  .pomodoro .input-group label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .pomodoro {
+    width: 98%;
+    padding: 0.8rem;
+    min-width: 240px;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.2rem;
+  }
+
+  #timerDisplay {
+    width: 160px;
+    height: 160px;
+    font-size: 1.8rem;
+  }
+
+  .pomodoro button {
+    padding: 0.7rem 0.8rem;
+    font-size: 0.85rem;
+  }
+
+  .pomodoro input[type="number"] {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1200px) {
+  .pomodoro {
+    max-width: 900px;
+    padding: 3rem 5rem 4rem 5rem;
+  }
+
+  .pomodoro h2 {
+    font-size: 2.5rem;
+  }
+
+  #timerDisplay {
+    width: 350px;
+    height: 350px;
+    font-size: 4rem;
+  }
+
+  .pomodoro input[type="number"] {
+    width: 130px;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .pomodoro button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+
+  .pomodoro .input-group label {
+    font-size: 1.1rem;
   }
 }

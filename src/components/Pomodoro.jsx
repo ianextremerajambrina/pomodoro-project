@@ -87,12 +87,18 @@ export default function Pomodoro() {
     <div className="pomodoro">
       <h2>Temporizador Pomodoro</h2>
       <div className='input-row'>
-        <label htmlFor="minutesInput">Actividad</label>
-        <input type="number" id="minutesInput" placeholder="Actividad" onChange={handleActivityChange} value={activity} />
-        <label htmlFor="restInput">Descanso</label>
-        <input type="number" id="restInput" placeholder="Descanso" onChange={handleRestChange} value={rest} />
-        <label htmlFor="cyclesInput">Ciclos</label>
-        <input type="number" id="cyclesInput" placeholder="Ciclos" onChange={handleCyclesChange} value={cycles} />
+        <div className="input-group">
+          <label htmlFor="minutesInput">Actividad</label>
+          <input type="number" id="minutesInput" placeholder="Actividad" onChange={handleActivityChange} value={activity} />
+        </div>
+        <div className="input-group">
+          <label htmlFor="restInput">Descanso</label>
+          <input type="number" id="restInput" placeholder="Descanso" onChange={handleRestChange} value={rest} />
+        </div>
+        <div className="input-group">
+          <label htmlFor="cyclesInput">Ciclos</label>
+          <input type="number" id="cyclesInput" placeholder="Ciclos" onChange={handleCyclesChange} value={cycles} />
+        </div>
       </div>
       <button id="startButton" onClick={startTimer} disabled={isRunning}>Iniciar Temporizador</button>
       <div id="timerDisplay">{formatTime(timeLeft)}</div>
