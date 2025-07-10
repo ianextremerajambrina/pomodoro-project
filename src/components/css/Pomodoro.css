@@ -12,6 +12,8 @@
   box-shadow: 0 1px 6px 0 rgba(80,120,255,0.07);
   transition: border 0.2s, box-shadow 0.2s;
   text-align: center;
+  min-width: 80px;
+  max-width: 150px;
 }
 
 
@@ -47,6 +49,23 @@
   justify-content: space-between; /* Asegurar que los inputs y el botón se distribuyan */
   margin-bottom: 1.2em;
   gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+.pomodoro .input-row label {
+  color: #1a202c;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-bottom: 0.3rem;
+  display: block;
+  text-align: center;
+}
+
+.pomodoro .input-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
 }
 
 #setButton:hover {
@@ -58,18 +77,24 @@
   background: linear-gradient(120deg, #fff6e6 0%, #ffe0ec 100%);
   border-radius: 24px;
   box-shadow: 0 8px 32px rgba(255,60,111,0.10), 0 1.5px 8px rgba(255,140,66,0.08);
-  padding: 2.5rem 4.5rem 3.5rem 4.5rem;
-  margin: 2.5rem auto;
+  padding: 2rem 3rem;
+  margin: 1rem auto;
   max-width: 800px;
   border: 2.5px solid #ff8c42;
   position: relative;
   overflow: hidden;
   transition: box-shadow 0.2s, transform 0.2s;
-  width: 80%; /* Usar porcentaje para el ancho */
+  width: 90%;
+  min-width: 280px;
+  box-sizing: border-box;
 }
 
 .pomodoro h2 {
   text-align: center;
+  color: #1a202c;
+  font-weight: 700;
+  font-size: 1.8rem;
+  margin: 0 0 1rem 0;
 }
 
 
@@ -115,16 +140,16 @@
 
 
 #timerDisplay {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
-  margin: 1.5rem 0;
+  margin: 1rem 0;
   color: #222e3a;
   letter-spacing: 1.5px;
   text-align: center;
   background: none;
   border-radius: 50%;
-  width: 320px;
-  height: 320px;
+  width: 250px;
+  height: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -135,11 +160,11 @@
   margin-left: auto;
   margin-right: auto;
   background: #eaf2fb;
-  width: 50%; /* Escalar proporcionalmente */
-  max-width: 300px;
-  height: auto;
   aspect-ratio: 1 / 1; /* Mantener proporción */
-  margin: 1rem auto;
+  min-width: 180px;
+  min-height: 180px;
+  max-width: 300px;
+  max-height: 300px;
 }
 
 #timerDisplay::after {
@@ -167,47 +192,217 @@
 }
 
 /* Ajustes responsivos para el temporizador */
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .pomodoro {
-    width: 90%;
-    padding: 1.5rem;
+    width: 95%;
+    padding: 1.8rem 2.5rem;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.7rem;
   }
 
   #timerDisplay {
-    width: 60%;
+    width: 220px;
+    height: 220px;
+    font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .pomodoro {
+    width: 98%;
+    padding: 1.5rem 2rem;
+    margin: 0.8rem auto;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.6rem;
+    margin-bottom: 0.8rem;
+  }
+
+  #timerDisplay {
+    width: 200px;
+    height: 200px;
+    font-size: 2.2rem;
+    margin: 0.8rem auto;
   }
 
   .pomodoro input[type="number"],
   .pomodoro button {
-    max-width: 150px;
+    font-size: 0.95rem;
+  }
+
+  .pomodoro .input-row {
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .pomodoro .input-group {
+    min-width: 90px;
   }
 }
 
 @media (max-width: 576px) {
-  .pomodoro .input-row {
-    flex-direction: column; /* Apilar inputs y botón verticalmente */
-    align-items: stretch; /* Estirar elementos para ocupar el ancho */
+  .pomodoro {
+    width: 98%;
+    padding: 1.2rem 1.5rem;
+    margin: 0.5rem auto;
+    min-width: 260px;
   }
 
-  .pomodoro input[type="number"],
-  #setButton {
-    width: 100%; /* Ocupar todo el ancho disponible */
-    margin: 0.5em 0; /* Ajustar márgenes */
+  .pomodoro h2 {
+    font-size: 1.4rem;
+    margin-bottom: 0.6rem;
+  }
+
+  .pomodoro .input-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .pomodoro .input-group {
+    width: 100%;
+    max-width: 180px;
+  }
+
+  .pomodoro input[type="number"] {
+    width: 100%;
+    margin: 0.2em 0;
+    padding: 0.6rem 0.8rem;
+  }
+
+  #timerDisplay {
+    width: 180px;
+    height: 180px;
+    font-size: 2rem;
+    margin: 0.6rem auto;
+  }
+
+  .pomodoro button {
+    width: 100%;
+    max-width: 220px;
+    margin: 0.4rem 0;
+    padding: 0.7rem 1rem;
   }
 }
 
 @media (max-width: 480px) {
   .pomodoro {
-    width: 95%;
-    padding: 1rem;
+    width: 98%;
+    padding: 1rem 1.2rem;
+    margin: 0.3rem auto;
+    min-width: 240px;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
   }
 
   #timerDisplay {
-    width: 70%;
+    width: 160px;
+    height: 160px;
+    font-size: 1.8rem;
+    margin: 0.5rem auto;
   }
 
   .pomodoro input[type="number"],
   .pomodoro button {
-    max-width: 120px;
+    font-size: 0.85rem;
+  }
+
+  .pomodoro .input-group label {
+    font-size: 0.85rem;
+  }
+
+  .pomodoro .input-row {
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+}
+
+/* Ajustes para pantallas muy pequeñas */
+@media (max-width: 360px) {
+  .pomodoro {
+    width: 98%;
+    padding: 0.8rem 1rem;
+    margin: 0.2rem auto;
+    min-width: 220px;
+  }
+
+  .pomodoro h2 {
+    font-size: 1.2rem;
+    margin-bottom: 0.4rem;
+  }
+
+  #timerDisplay {
+    width: 140px;
+    height: 140px;
+    font-size: 1.6rem;
+    margin: 0.4rem auto;
+    border-width: 5px;
+  }
+
+  .pomodoro button {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.8rem;
+    margin: 0.3rem 0;
+  }
+
+  .pomodoro input[type="number"] {
+    padding: 0.5rem 0.6rem;
+    font-size: 0.8rem;
+  }
+
+  .pomodoro .input-group label {
+    font-size: 0.8rem;
+  }
+
+  .pomodoro .input-row {
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* Ajustes para pantallas grandes */
+@media (min-width: 1200px) {
+  .pomodoro {
+    max-width: 900px;
+    padding: 2.5rem 4rem;
+  }
+
+  .pomodoro h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  #timerDisplay {
+    width: 320px;
+    height: 320px;
+    font-size: 3.5rem;
+    margin: 1.5rem auto;
+  }
+
+  .pomodoro input[type="number"] {
+    width: 130px;
+    font-size: 1.2rem;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .pomodoro button {
+    font-size: 1.2rem;
+    padding: 1rem 2rem;
+  }
+
+  .pomodoro .input-group label {
+    font-size: 1.1rem;
+  }
+
+  .pomodoro .input-row {
+    margin-bottom: 1.5rem;
   }
 }

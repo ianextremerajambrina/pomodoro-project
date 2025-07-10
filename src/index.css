@@ -28,18 +28,22 @@ body {
   min-height: 100vh;
   background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
   box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 0;
 }
 
 main {
   width: 100%;
   max-width: 1200px;
-  padding: 1rem;
+  padding: 0.5rem;
   box-sizing: border-box;
   flex-grow: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin: 0 auto;
+  min-height: calc(100vh - 120px);
 }
 
 main .main-content {
@@ -68,79 +72,61 @@ button {
   font-weight: 600;
   letter-spacing: 1px;
   transition: background 0.2s, transform 0.1s;
+  cursor: pointer;
+  min-height: 44px; /* Minimum touch target size */
 }
 button:hover {
   background: linear-gradient(90deg, #ff3c6f 0%, #ff8c42 100%);
   transform: translateY(-2px) scale(1.04);
 }
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+button:disabled:hover {
+  transform: none;
+  background: linear-gradient(90deg, #ff8c42 0%, #ff3c6f 100%);
+}
+
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
 /* Ajustes responsivos globales */
-@media (max-width: 1200px) {
-  .pomodoro {
-    max-width: 700px;
-  }
-}
-
-@media (max-width: 992px) {
-  .pomodoro {
-    max-width: 600px;
-  }
-}
-
 @media (max-width: 768px) {
-  .pomodoro {
-    max-width: 90%;
-    padding: 1.5rem;
-  }
-
-  .settings-grid {
-    grid-template-columns: 1fr; /* Cambiar a una columna */
-    gap: 1rem;
-  }
-
-  #timerDisplay {
-    width: 250px;
-    height: 250px;
-  }
-
   main {
-    padding: 0.5rem;
+    padding: 0.3rem;
+    min-height: calc(100vh - 100px);
+  }
+
+  h1 {
+    font-size: 2.2em;
   }
 }
 
 @media (max-width: 576px) {
-  .pomodoro {
-    padding: 1rem;
+  main {
+    padding: 0.2rem;
+    min-height: calc(100vh - 80px);
   }
 
   h1 {
     font-size: 1.8rem;
   }
-
-  #timerDisplay {
-    width: 200px;
-    height: 200px;
-  }
 }
 
-/* Estilos para resoluciones ultra pequeñas */
 @media (max-width: 480px) {
-  .pomodoro {
-    padding: 0.5rem;
-    max-width: 85%;
+  main {
+    padding: 0.1rem;
+    min-height: calc(100vh - 70px);
   }
 
   h1 {
     font-size: 1.5rem;
-  }
-
-  #timerDisplay {
-    width: 150px;
-    height: 150px;
   }
 
   button {
@@ -151,26 +137,32 @@ button:focus-visible {
   body {
     font-size: 14px;
   }
+}
 
+@media (max-width: 360px) {
   main {
-    padding: 0.2rem;
+    padding: 0.05rem;
+    min-height: calc(100vh - 60px);
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  button {
+    font-size: 0.85em;
+    padding: 0.5em 0.8em;
   }
 }
 
 /* Estilos para resoluciones ultra grandes */
 @media (min-width: 1440px) {
-  .pomodoro {
-    max-width: 900px;
+  main {
     padding: 2rem;
   }
 
   h1 {
-    font-size: 4rem;
-  }
-
-  #timerDisplay {
-    width: 350px;
-    height: 350px;
+    font-size: 3.5rem;
   }
 
   button {
